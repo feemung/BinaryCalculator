@@ -1,5 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:mykeyboard="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.feemung.binarycalculator.ui.fragment.BinaryFragment">
 
@@ -15,6 +17,7 @@
             android:layout_weight="2"
             android:id="@+id/textView7" />
 
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
@@ -25,30 +28,30 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="二进制"
-                android:id="@+id/textView" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="二进制" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/textView2" />
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <com.feemung.binarycalculator.widget.EditTextAsCustomKeyboard
+                android:layout_width="200dip"
+                android:layout_height="60dip"
+                android:id="@+id/binary_customEditTextAsKeyboard"
+                mykeyboard:xml="@xml/binary_keyboard"
 
-
-                android:inputType="number"
-                android:ems="12"
-                android:id="@+id/binary_editTextBinary" />
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/textView3" />
+                android:layout_weight="1" />
         </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,7 +65,10 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:background="#FFFFFF"
                 android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
@@ -80,6 +86,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="New Text"
                     android:id="@+id/binary_octalTextView" />
             </LinearLayout>
@@ -88,7 +95,10 @@
                 android:layout_height="1dp"
                 android:background="#ff3b10ff"/>
             <LinearLayout
+                android:background="#FFFFFF"
                 android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
@@ -106,6 +116,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="New Text"
                     android:id="@+id/binary_DecimalTV" />
             </LinearLayout>
@@ -114,7 +125,10 @@
                 android:layout_height="1dp"
                 android:background="#ff3b10ff"/>
             <LinearLayout
+                android:background="#FFFFFF"
                 android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
@@ -133,6 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:id="@+id/binary_HexadecimalTV" />
             </LinearLayout>
         </LinearLayout>

@@ -29,15 +29,13 @@ public class OctalFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_octal, container, false);
-        octalEdit=(EditText)view.findViewById(R.id.octal_editText);
+        octalEdit=(EditText)view.findViewById(R.id.octal_customEditTextAsKeyboard);
         binaryTV=(TextView)view.findViewById(R.id.octal_binaryTextView);
         hexadecimalTV=(TextView)view.findViewById(R.id.octal_hexadecimalView);
         decimalTV=(TextView)view.findViewById(R.id.octal_decimalTV);
 
         octalEdit.addTextChangedListener(new TextWatcher() {
 
-            private int editStart ;
-            private int editEnd ;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 l.d("onCreateView#beforeTextChanged");
@@ -59,22 +57,9 @@ public class OctalFragment extends BaseFragment {
                     l.d("binaryEdit checkisempty");
                     return;
                 }
-                editStart = octalEdit.getSelectionStart();
-                editEnd = octalEdit.getSelectionEnd();
 
-                if ((!Transform.checkIsOctal(s.toString()))) {
-
-                    Toast.makeText(getActivity(),
-                            "你输入的字数错误，请输入0到7的任意数字", Toast.LENGTH_SHORT)
-                            .show();
-                    s.delete(editStart - 1, editEnd);
-                    octalEdit.setText(s);
-                    octalEdit.setSelection(octalEdit.length());
-
-
-                }else {
                     transformAndUpdate(Transform.octal2decimal(s.toString()));
-                }
+
             }
         });
         return view;

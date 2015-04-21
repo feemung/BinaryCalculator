@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 可以直接输入的字符(如0-9,.)，他们在键盘映射xml中的android:codes值必须配置为该字符的ASCII码 -->
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    
+	android:keyWidth="34%p" android:horizontalGap="1px"
+	android:verticalGap="1px" android:keyHeight="150dip">
+
+	<Row>
+		<Key android:codes="-3"
+			android:keyEdgeFlags="left"
+			android:keyIcon="@drawable/sym_keyboard_done"
+			android:keyWidth="16%p"
+			/>
+
+		<Key android:codes="48" android:keyLabel="0"
+		    android:keyWidth="34%p" />
+        <Key android:codes="49" android:keyLabel="1"/>
+		<Key android:codes="-5" android:keyEdgeFlags="right"
+		   android:isRepeatable="true"
+		     android:keyIcon="@drawable/sym_keyboard_delete"
+		     android:keyWidth="17%p"/>
+	</Row>
+</Keyboard>

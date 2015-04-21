@@ -19,8 +19,6 @@ import com.feemung.binarycalculator.cache.Cache;
 public class HexadecimalFragment extends BaseFragment {
     private Logger l= Logger.getLogger(OctalFragment.class);
 
-
-
     public HexadecimalFragment() {
         // Required empty public constructor
     }
@@ -29,15 +27,13 @@ public class HexadecimalFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_hexadecimal, container, false);
-        hexadecimalEdit=(EditText)view.findViewById(R.id.hexadecimal_editText);
+        hexadecimalEdit=(EditText)view.findViewById(R.id.hexadecimal_customEditText);
         binaryTV=(TextView)view.findViewById(R.id.hexadecimal_binaryTextView);
         octalTV=(TextView)view.findViewById(R.id.hexadecimal_octalTextView);
         decimalTV=(TextView)view.findViewById(R.id.hexadecimal_DecimalTV);
 
         hexadecimalEdit.addTextChangedListener(new TextWatcher() {
 
-            private int editStart ;
-            private int editEnd ;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 l.d("onCreateView#beforeTextChanged");
@@ -59,22 +55,9 @@ public class HexadecimalFragment extends BaseFragment {
                     l.d("binaryEdit checkisempty");
                     return;
                 }
-                editStart = hexadecimalEdit.getSelectionStart();
-                editEnd = hexadecimalEdit.getSelectionEnd();
 
-                if (editStart>0&&(!Transform.checkIsHexadecimal(s.toString()))) {
-
-                        Toast.makeText(getActivity(),
-                                "你输入的字数错误，请输入0到9或a到f中的任意数字或字母", Toast.LENGTH_SHORT)
-                                .show();
-                        s.delete(editStart - 1, editEnd);
-                        hexadecimalEdit.setText(s);
-                        hexadecimalEdit.setSelection(hexadecimalEdit.length());
-
-
-                }else {
                     transformAndUpdate(Transform.hexadecimal2decimal(s.toString()));
-                }
+
             }
         });
         return view;

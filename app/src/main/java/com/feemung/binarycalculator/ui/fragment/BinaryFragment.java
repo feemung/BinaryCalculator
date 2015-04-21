@@ -47,15 +47,13 @@ public class BinaryFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_binary, container, false);
-        binaryEdit=(EditText)view.findViewById(R.id.binary_editTextBinary);
+        binaryEdit=(EditText)view.findViewById(R.id.binary_customEditTextAsKeyboard);
         octalTV=(TextView)view.findViewById(R.id.binary_octalTextView);
         decimalTV=(TextView)view.findViewById(R.id.binary_DecimalTV);
         hexadecimalTV=(TextView)view.findViewById(R.id.binary_HexadecimalTV);
 
         binaryEdit.addTextChangedListener(new TextWatcher() {
 
-            private int editStart ;
-            private int editEnd ;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 l.d("onCreateView#beforeTextChanged");
@@ -73,31 +71,11 @@ public class BinaryFragment extends BaseFragment {
                 l.d("onCreateView#afterTextChanged->text:%s",s.toString());
 
                 if(Transform.checkIsEmpty(s.toString())){
-
                     transformAndUpdate("0");
                     l.d("binaryEdit checkisempty");
                     return;
                 }
-                editStart = binaryEdit.getSelectionStart();
-                editEnd = binaryEdit.getSelectionEnd();
-               l.d("afterTextChanged->editStart:%s,editEnd:%s",editStart,editEnd);
-
-                if (!Transform.checkIsEmpty(s.toString())&&!Transform.checkIsBinary(s.toString())) {
-                    l.d("afterTextChanged_checkIsBinary");
-
-                        Toast.makeText(getActivity(),
-                                "你输入的字数错误，请输入数字0或1！", Toast.LENGTH_SHORT)
-                                .show();
-                        s.delete(editStart - 1, editEnd);
-                        binaryEdit.setText(s);
-                        binaryEdit.setSelection(binaryEdit.length());
-
-
-
-                }else {
-
                     transformAndUpdate(Transform.binary2decimal(s.toString()));
-                }
             }
         });
         return view;

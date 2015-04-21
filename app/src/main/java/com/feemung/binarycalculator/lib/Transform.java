@@ -12,32 +12,6 @@ public class Transform {
         }
     }
 
-    public static boolean checkIsBinary(String str) {
-        try{
-            Long.parseLong(str, 2);
-            return true;
-        }catch (Exception e) {
-            return false;
-        }
-    }
-
-
-    public static boolean checkIsHexadecimal(String str) {
-        try{
-            Long.parseLong(str, 16);
-            return true;
-        }catch (Exception e) {
-            return false;
-        }
-    }
-    public static boolean checkIsOctal(String str) {
-        try{
-            Long.parseLong(str, 8);
-            return true;
-        }catch (Exception e) {
-            return false;
-        }
-    }
     public static String binary2decimal(String str) {
         return  String.valueOf( Long.parseLong(str,2));
 
@@ -59,9 +33,5 @@ public class Transform {
     public static String decimal2binary(String decimal) {
         return Long.toBinaryString(Long.parseLong(decimal));
     }
-
-
-
-
 
 }
